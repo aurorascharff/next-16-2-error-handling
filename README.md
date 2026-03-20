@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Error Handling in Next.js 16.2
 
-## Getting Started
+Interactive demo comparing error handling approaches in Next.js 16.2: `react-error-boundary` (before) vs the built-in `catchError` API (after).
 
-First, run the development server:
+## What this demonstrates
+
+A `UserProfile` server component randomly throws errors or calls `notFound()`. Two tabs show how each approach handles it:
+
+- **Before** — `react-error-boundary` catches _all_ errors, including framework-internal ones like `notFound()` and `redirect()`. `reset()` only clears client state without re-fetching server component data.
+- **After** — `catchError` is framework-aware. `retry()` re-fetches server component data, and `notFound()`/`redirect()` propagate correctly to the framework.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Relevant docs
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Error Handling guide](https://nextjs.org/docs/app/getting-started/error-handling)
+- [`catchError`](https://nextjs.org/docs/app/api-reference/functions/catchError)
+- [`unstable_rethrow`](https://nextjs.org/docs/app/api-reference/functions/unstable_rethrow)
+- [`refresh`](https://nextjs.org/docs/app/api-reference/functions/refresh)
+- [`error.js` file convention](https://nextjs.org/docs/app/api-reference/file-conventions/error)
+- [`not-found.js` file convention](https://nextjs.org/docs/app/api-reference/file-conventions/not-found)
 
-## Learn More
+## Tech stack
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js 16.2](https://nextjs.org/)
+- [React 19](https://react.dev/)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)

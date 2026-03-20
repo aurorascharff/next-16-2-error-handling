@@ -1,5 +1,5 @@
-import { TabNav } from "../_components/tab-nav";
-import { RefreshButton } from "../_components/refresh-button";
+import { TabNav } from "@/components/TabNav";
+import { RefreshButton } from "@/components/RefreshButton";
 
 export default function DemoLayout({
   children,

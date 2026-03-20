@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { ReactErrorBoundary } from "../../_components/react-error-boundary";
-import UserProfile from "../../_components/user-profile";
+import { ReactErrorBoundary } from "./_components/ReactErrorBoundary";
+import UserProfile from "@/components/UserProfile";
 
 function LoadingSkeleton() {
   return (

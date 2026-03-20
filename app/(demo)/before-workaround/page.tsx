@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import ErrorBoundary from "./_components/ErrorBoundary";
-import UserProfile from "@/components/UserProfile";
+import { ReactErrorBoundaryFixed } from "./_components/ReactErrorBoundaryFixed";
+import UserProfileSafe from "./_components/UserProfileSafe";
 
 function LoadingSkeleton() {
   return (
@@ -12,19 +12,20 @@ function LoadingSkeleton() {
   );
 }
 
-export default function AfterPage() {
+export default function WorkaroundPage() {
   return (
     <div className="space-y-4">
       <p className="text-xs text-muted-foreground">
-        catchError is framework-aware. retry() re-fetches Server Component
-        data, notFound() and redirect() propagate to the framework instead
-        of being caught.
+        Workaround: wrap data fetching in try/catch to rethrow framework errors
+        by checking the digest, and change the ErrorBoundary key +
+        router.refresh() inside startTransition to re-fetch Server Component
+        data.
       </p>
-      <ErrorBoundary>
+      <ReactErrorBoundaryFixed>
         <Suspense fallback={<LoadingSkeleton />}>
-          <UserProfile />
+          <UserProfileSafe />
         </Suspense>
-      </ErrorBoundary>
+      </ReactErrorBoundaryFixed>
     </div>
   );
 }
