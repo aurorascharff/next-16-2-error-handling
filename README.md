@@ -1,12 +1,13 @@
 # Error Handling in Next.js 16.2
 
-Interactive demo comparing error handling approaches in Next.js 16.2: `react-error-boundary` (before) vs the built-in `catchError` API (after).
+Interactive demo comparing error handling approaches in Next.js 16.2: `react-error-boundary` (before) vs the workaround (digest filtering + key reset) vs the built-in `catchError` API (after).
 
 ## What this demonstrates
 
-A `UserProfile` server component randomly throws errors or calls `notFound()`. Two tabs show how each approach handles it:
+A `UserProfile` server component randomly throws errors or calls `notFound()`. Three tabs show how each approach handles it:
 
 - **Before** — `react-error-boundary` catches _all_ errors, including framework-internal ones like `notFound()` and `redirect()`. `reset()` only clears client state without re-fetching server component data.
+- **Workaround** — Wraps data fetching in try/catch to filter and rethrow Next.js internal errors by checking the `digest` property. Uses an ErrorBoundary `key` change + `router.refresh()` inside `startTransition` to properly re-fetch server component data on retry.
 - **After** — `catchError` is framework-aware. `retry()` re-fetches server component data, and `notFound()`/`redirect()` propagate correctly to the framework.
 
 ## Getting started
