@@ -13,17 +13,18 @@ const user: User = {
   role: "Developer",
 };
 
+let callCount = 0;
+
 export async function getUser(): Promise<User> {
   await connection();
   await new Promise((resolve) => setTimeout(resolve, 800));
 
-  const rand = Math.random();
-  if (rand < 0.33) {
-    notFound();
+  const cycle = callCount++ % 3;
+  if (cycle === 0) {
+    return user;
   }
-  if (rand < 0.66) {
+  if (cycle === 1) {
     throw new Error("Database connection timeout");
   }
-
-  return user;
+  notFound();
 }
