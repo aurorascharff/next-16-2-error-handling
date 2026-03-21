@@ -4,9 +4,9 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "catchError & unstable_rethrow",
+  title: "Error Handling in Next.js 16.2",
   description:
-    "Demo of unstable_catchError and unstable_rethrow in Next.js 16",
+    "Component-level error handling: react-error-boundary vs catchError",
 };
 
 export default function RootLayout({

@@ -25,7 +25,6 @@ Open [http://localhost:3000](http://localhost:3000).
 
 - [Error Handling guide](https://nextjs.org/docs/app/getting-started/error-handling)
 - [`catchError`](https://nextjs.org/docs/app/api-reference/functions/catchError)
-- [`unstable_rethrow`](https://nextjs.org/docs/app/api-reference/functions/unstable_rethrow)
 - [`refresh`](https://nextjs.org/docs/app/api-reference/functions/refresh)
 - [`error.js` file convention](https://nextjs.org/docs/app/api-reference/file-conventions/error)
 - [`not-found.js` file convention](https://nextjs.org/docs/app/api-reference/file-conventions/not-found)
