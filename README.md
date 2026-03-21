@@ -4,7 +4,9 @@ Interactive demo comparing error handling approaches in Next.js 16.2: `react-err
 
 ## What this demonstrates
 
-A `UserProfile` server component randomly throws errors or calls `notFound()`. Three tabs show how each approach handles it:
+Next.js provides `error.tsx` for route-level error handling out of the box. But when you need more granular, component-level error boundaries within a page, you need a different approach.
+
+A `UserProfile` server component cycles through success, a database error, and `notFound()`. Three tabs show how each approach handles component-level errors:
 
 - **Before** — `react-error-boundary` catches _all_ errors, including framework-internal ones like `notFound()` and `redirect()`. `reset()` only clears client state without re-fetching server component data.
 - **Workaround** — Wraps data fetching in try/catch to filter and rethrow Next.js internal errors by checking the `digest` property. Uses an ErrorBoundary `key` change + `router.refresh()` inside `startTransition` to properly re-fetch server component data on retry.

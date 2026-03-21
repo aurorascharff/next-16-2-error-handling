@@ -14,6 +14,14 @@ export default function DemoLayout({
         </h1>
         <RefreshButton />
       </div>
+      <p className="text-sm text-muted-foreground">
+        Next.js provides{" "}
+        <code className="text-xs bg-muted px-1.5 py-0.5 rounded font-mono">
+          error.tsx
+        </code>{" "}
+        for route-level error handling. These examples show component-level
+        error boundaries for when you need more granular control within a page.
+      </p>
       <TabNav />
       {children}
     </div>
