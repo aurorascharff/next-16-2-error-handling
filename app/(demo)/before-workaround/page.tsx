@@ -20,7 +20,7 @@ export default function WorkaroundPage() {
         errors, and use a key change + router.refresh() inside startTransition
         to re-fetch Server Component data.
       </p>
-      <ReactErrorBoundaryFixed>
+      <ReactErrorBoundaryFixed title="Failed to load user profile">
         <Suspense fallback={<LoadingSkeleton />}>
           <UserProfile />
         </Suspense>

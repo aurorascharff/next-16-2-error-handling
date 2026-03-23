@@ -20,7 +20,7 @@ export default function BeforePage() {
         redirect(). reset() only clears client state without re-fetching
         Server Component data.
       </p>
-      <ReactErrorBoundary>
+      <ReactErrorBoundary title="Failed to load user profile">
         <Suspense fallback={<LoadingSkeleton />}>
           <UserProfile />
         </Suspense>

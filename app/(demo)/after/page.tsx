@@ -20,7 +20,7 @@ export default function AfterPage() {
         data, notFound() and redirect() propagate to the framework instead
         of being caught.
       </p>
-      <ErrorBoundary>
+      <ErrorBoundary title="Failed to load user profile">
         <Suspense fallback={<LoadingSkeleton />}>
           <UserProfile />
         </Suspense>

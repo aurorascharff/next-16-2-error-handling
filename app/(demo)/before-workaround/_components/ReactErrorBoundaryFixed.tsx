@@ -23,8 +23,10 @@ function isNextInternalError(error: unknown): boolean {
 }
 
 export function ReactErrorBoundaryFixed({
+  title = "Something went wrong",
   children,
 }: {
+  title?: string;
   children: React.ReactNode;
 }) {
   const router = useRouter();
@@ -41,9 +43,7 @@ export function ReactErrorBoundaryFixed({
 
         return (
           <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-6 space-y-3">
-            <p className="text-sm font-medium text-destructive">
-              Something went wrong
-            </p>
+            <p className="text-sm font-medium text-destructive">{title}</p>
             <div className="flex items-center gap-2">
               <Button
                 variant="outline"
