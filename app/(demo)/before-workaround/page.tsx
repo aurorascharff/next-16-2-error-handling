@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { ReactErrorBoundaryFixed } from "./_components/ReactErrorBoundaryFixed";
-import UserProfileSafe from "./_components/UserProfileSafe";
+import UserProfile from "@/components/UserProfile";
 
 function LoadingSkeleton() {
   return (
@@ -16,14 +16,13 @@ export default function WorkaroundPage() {
   return (
     <div className="space-y-4">
       <p className="text-xs text-muted-foreground">
-        Workaround: wrap data fetching in try/catch to rethrow framework errors
-        by checking the digest, and change the ErrorBoundary key +
-        router.refresh() inside startTransition to re-fetch Server Component
-        data.
+        Workaround: check the digest in the error boundary to detect framework
+        errors, and use a key change + router.refresh() inside startTransition
+        to re-fetch Server Component data.
       </p>
       <ReactErrorBoundaryFixed>
         <Suspense fallback={<LoadingSkeleton />}>
-          <UserProfileSafe />
+          <UserProfile />
         </Suspense>
       </ReactErrorBoundaryFixed>
     </div>
