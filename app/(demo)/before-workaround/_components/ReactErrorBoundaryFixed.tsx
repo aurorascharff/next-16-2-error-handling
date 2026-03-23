@@ -39,12 +39,11 @@ export function ReactErrorBoundaryFixed({
           throw error;
         }
 
-        const message =
-          error instanceof Error ? error.message : "Something went wrong";
-
         return (
           <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-6 space-y-3">
-            <p className="text-sm font-medium text-destructive">{message}</p>
+            <p className="text-sm font-medium text-destructive">
+              Something went wrong
+            </p>
             <div className="flex items-center gap-2">
               <Button
                 variant="outline"

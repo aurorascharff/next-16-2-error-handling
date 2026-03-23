@@ -3,13 +3,12 @@
 import { ErrorBoundary, type FallbackProps } from "react-error-boundary";
 import { Button } from "@/components/ui/button";
 
-function Fallback({ error, resetErrorBoundary }: FallbackProps) {
-  const message =
-    error instanceof Error ? error.message : "Something went wrong";
-
+function Fallback({ resetErrorBoundary }: FallbackProps) {
   return (
     <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-6 space-y-3">
-      <p className="text-sm font-medium text-destructive">{message}</p>
+      <p className="text-sm font-medium text-destructive">
+        Something went wrong
+      </p>
       <Button variant="outline" size="sm" onClick={resetErrorBoundary}>
         Try again
       </Button>
