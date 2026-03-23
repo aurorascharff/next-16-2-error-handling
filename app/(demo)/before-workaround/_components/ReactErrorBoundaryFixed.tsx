@@ -4,7 +4,23 @@ import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Button } from "@/components/ui/button";
-import { isNextInternalError } from "@/lib/utils";
+
+function isNextInternalError(error: unknown): boolean {
+  if (
+    error &&
+    typeof error === "object" &&
+    "digest" in error &&
+    typeof (error as { digest: unknown }).digest === "string"
+  ) {
+    const digest = (error as { digest: string }).digest;
+    return (
+      digest.startsWith("NEXT_REDIRECT") ||
+      digest.startsWith("NEXT_HTTP_ERROR_FALLBACK") ||
+      digest.startsWith("NEXT_NOT_FOUND")
+    );
+  }
+  return false;
+}
 
 export function ReactErrorBoundaryFixed({
   title = "Something went wrong",
