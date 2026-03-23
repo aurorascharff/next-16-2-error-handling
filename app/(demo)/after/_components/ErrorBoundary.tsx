@@ -12,7 +12,9 @@ function ErrorFallback(
 ) {
   return (
     <div className="rounded-lg border border-destructive/30 bg-destructive/5 p-6 space-y-3">
-      <p className="text-sm font-medium text-destructive">{props.title}</p>
+      <p className="text-sm font-medium text-destructive">
+        {props.title ?? "Something went wrong"}
+      </p>
       <div className="flex items-center gap-2">
         <Button variant="outline" size="sm" onClick={() => retry()}>
           Try again (retry)
