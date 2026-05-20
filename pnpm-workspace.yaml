@@ -1,0 +1,12 @@
+packages:
+  - .
+
+minimumReleaseAge: 2880 # 48 hrs
+minimumReleaseAgeExclude:
+  - '@next/*'
+  - eslint-config-next
+  - next
+onlyBuiltDependencies:
+  - msw
+  - sharp
+  - unrs-resolver
